@@ -119,9 +119,13 @@ app.listen(5002, () => {
 ### Thunder client 확인 
 <img width="1384" alt="image" src="https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/0e668378-8415-48c6-a90c-66c5d2e29df4">
 
-> 복습하기
-쿠키에 저장되어있는 브라우저의 열쇠를 바탕으로 세션을 조회해보니까 정상적으로 처음 저장되어있던 sparta라는 문자열이 출력됨
+---
 
-![image](https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/dd2c576f-9eab-426f-afc0-f20f97c8a087)
+> **복습하기**
+> 
+> 쿠키에 저장되어있는 브라우저의 열쇠를 바탕으로 세션을 조회해보니까 
+> 정상적으로 처음 저장되어있던 sparta라는 문자열이 출력됨
+> 
+>![image](https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/dd2c576f-9eab-426f-afc0-f20f97c8a087)
 
 
