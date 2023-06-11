@@ -43,3 +43,24 @@ app.get("/get-cookie", (req, res) => {
 
 ### 프론트 response 확인
 ![image](https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/8abc9262-002a-446f-b8f8-fcba16836a8a)
+
+
+## 3. cookie-parse 미들웨어 적용
+**cookie-parser 미들웨어**는 요청에 추가된 쿠키를 req.cookies 객체로 만들어 준다.
+
+더이상 `req.headers.cookie`와 같이 번거롭게 사용하지 않아도 된다
+```npm install cookie-parser ```
+
+
+```
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+// 클라이언트 -> 서버 쿠키 정보 전달
+app.get("/get-cookie", (req, res) => {
+    // const cookie = req.headers.cookie;
+    const cookies = req.cookies; // cookieparser 미들웨어를 적용했기 때문에 사용할 수 있다.
+    console.log(cookies); // name=sparta
+    return res.status(200).json({ cookies });
+});
+```
