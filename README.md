@@ -73,3 +73,46 @@ app.get("/get-cookie", (req, res) => {
 <img width="1387" alt="image" src="https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/af5885bd-b12e-4e17-a7a8-29e61540d944">
 
 
+## 4. session backend api 코드 1
+```
+// 사용자의 정보를 저장할 만한 자물쇠(데이터를 저장하는 뿐)
+let session = {}; // session 객체 생성 : Key - value()
+app.get("/set-session", (req,res) => {
+    const name = "sparta"; // 세선에 저장 데이터
+    const uniqueInt = Date.now(); // 클라이언트에게 할당한 열쇠가 uniqueInt로 되어있음
+    // 열쇠가 들어왔을때 서버에 저장된 데이터를 전달해줘야 하기 때문에 uniqueInt를 세션의 키로 사용
+    session[uniqueInt] = name; // 세선에 데이터 저장
+
+    res.cookie("sessionKey", uniqueInt);
+    res.status(200).end();
+
+});
+```
+
+### Thunder client 확인 1
+이름은 sessionKey, value는 데이터를 저장했던 그 시점에 정보가 생성
+
+이 api 다음에는 저장된 열쇠(value)를 바탕으로 서버에 데이터를 조회해야한다
+
+<img width="1397" alt="image" src="https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/48818995-a069-4660-a1c0-90d13f6df2be">
+
+## 5. session backend api 코드 2
+
+```
+app.get("/get-session", (req, res) => {
+    // 사용자의 쿠키안에 있는 sessionKey라는 쿠키를 가져와야 한다.
+    const {sessionKey} = req.cookies;
+    // sessionKey라는 쿠키를 바탕으로 session[]이라는 자물쇠를 열고, 결과값을 sessionItem라는 변수에 할당한다
+    const sessionItem = session[sessionKey]
+
+    console.log(sessionItem);
+    return res.status(200).json({sessionItem: sessionItem});
+});
+
+app.listen(5002, () => {
+    console.log(5002, "포트로 서버가 실행되었습니다.")
+})
+```
+
+### Thunder client 확인 1
+<img width="1384" alt="image" src="https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/0e668378-8415-48c6-a90c-66c5d2e29df4">
