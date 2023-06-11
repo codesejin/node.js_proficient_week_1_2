@@ -45,6 +45,19 @@ app.get("/get-session", (req, res) => {
     return res.status(200).json({sessionItem: sessionItem});
 });
 
-app.listen(5002, () => {
-    console.log(5002, "포트로 서버가 실행되었습니다.")
+// 퀴즈 요구 사항 1 : GET Method로 http://localhost:5001/set을 호출했을 때, name이라는 이름을 가진 “nodejs” 문자열을 저장한 쿠키를 할당해주세요!
+
+app.get("/set", (req,res) => {
+    res.cookie('name', 'nodejs');
+return res.status(200).end();
+});
+
+// 퀴즈 요구 사항 2 : GET Method로 http://localhost:5001/get을 호출했을 때, 클라이언트에게 전달받은 모든 쿠키 정보들이 반환되는 API를 만들어주세요!
+app.get("/get", (req, res) => {
+    const cookies = req.cookies; // cookieparser 미들웨어를 적용했기 때문에 사용할 수 있다.
+    return res.status(200).json({ cookies });
+});
+
+app.listen(5001, () => {
+    console.log(5001, "포트로 서버가 실행되었습니다.")
 })
