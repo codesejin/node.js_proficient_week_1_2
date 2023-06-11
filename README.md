@@ -64,3 +64,12 @@ app.get("/get-cookie", (req, res) => {
     return res.status(200).json({ cookies });
 });
 ```
+
+### Thunder client 확인 1
+<img width="1392" alt="image" src="https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/7225421c-48f5-4ccb-b4cd-66f17c1a43fe">
+
+### Thunder clinet 확인 2
+미들웨어를 사용하지 않았을때는 문자열로 출력이 되는데, 미들웨어 사용하면 객체 형태로 출력된다
+<img width="1387" alt="image" src="https://github.com/codesejin/node.js_proficient_week_1_2/assets/101460733/af5885bd-b12e-4e17-a7a8-29e61540d944">
+
+
